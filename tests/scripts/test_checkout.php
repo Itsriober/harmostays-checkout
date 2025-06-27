@@ -1,6 +1,14 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
 echo "=== PayGate Integration Test - Multiple Links Generator ===\n\n";
+
+// Load .env variables for CLI
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
 
 $secret = getenv('CHECKOUT_SECRET');
 
