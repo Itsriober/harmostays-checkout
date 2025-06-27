@@ -84,7 +84,10 @@
     <div class="relative z-10 max-w-2xl mx-auto text-center fade-in">
         <!-- Logo -->
         <div class="mb-8 floating-animation">
-            <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="mx-auto h-24 w-auto filter drop-shadow-2xl">
+            <img src="{{ url('main-logo.png') }}" alt="HarmoStays Logo" class="mx-auto h-24 w-auto filter drop-shadow-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none;" class="mx-auto h-24 w-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-xl">HS</span>
+            </div>
         </div>
         
         <!-- Main card -->
