@@ -22,7 +22,7 @@ print_r($data);
 echo "\nSignature: $signature\n\n";
 
 $query = http_build_query(array_merge($data, ['signature' => $signature]));
-$url = "http://localhost:8001/checkout?$query";
+$url = "https://checkout.harmostays.com/checkout?$query";
 
 echo "Test URL:\n$url\n\n";
 
