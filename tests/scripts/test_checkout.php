@@ -1,14 +1,23 @@
 <?php
 
-require __DIR__ . '/../../vendor/autoload.php';
-
-use Dotenv\Dotenv;
+// Load .env variables for CLI
+$dotenvPath = __DIR__ . '/../../.env';
+if (file_exists($dotenvPath)) {
+    $lines = file($dotenvPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+        list($name, $value) = array_map('trim', explode('=', $line, 2));
+        if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            putenv(sprintf('%s=%s', $name, $value));
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
+}
 
 echo "=== PayGate Integration Test - Multiple Links Generator ===\n\n";
-
-// Load .env variables for CLI
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
-$dotenv->load();
 
 $secret = getenv('CHECKOUT_SECRET');
 
