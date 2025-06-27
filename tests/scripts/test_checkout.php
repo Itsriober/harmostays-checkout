@@ -63,7 +63,8 @@ for ($i = 0; $i < $numberOfLinks; $i++) {
         'currency' => 'USD',
     ];
 
-    $base = "{$data['booking_id']}|{$data['user_id']}|{$data['amount']}|{$data['currency']}";
+    $amountFormatted = rtrim(rtrim(number_format($data['amount'], 2, '.', ''), '0'), '.');
+    $base = "{$data['booking_id']}|{$data['user_id']}|{$amountFormatted}|{$data['currency']}";
     $signature = hash_hmac('sha256', $base, $secret);
 
     $query = http_build_query(array_merge($data, ['signature' => $signature]));
