@@ -19,20 +19,24 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    {{-- Example row, replace with @foreach($payments as $payment) --}}
+                    @forelse($payments as $payment)
                     <tr class="transition hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap font-mono text-sm text-gray-700">123456</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">admin@example.com</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sample Villa</td>
+                        <td class="px-6 py-4 whitespace-nowrap font-mono text-sm text-gray-700">{{ $payment->booking_id }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $payment->user->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $payment->property_name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${{ number_format($payment->amount, 2) }} {{ $payment->currency }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                Paid
+                            <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $payment->status === 'paid' ? 'bg-green-100 text-green-800' : ($payment->status === 'failed' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
+                                {{ ucfirst($payment->status) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-06-01</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $payment->created_at->format('M d, Y') }}</td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @empty
+                    <tr>
+                        <td colspan="6" class="text-center text-gray-400 py-10">No payments found.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

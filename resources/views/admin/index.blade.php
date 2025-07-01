@@ -8,15 +8,15 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="content-card text-center transform hover:scale-105 transition-transform duration-300">
             <h3 class="text-lg font-semibold text-gray-500 mb-2">Total Users</h3>
-            <p class="text-4xl font-bold text-harmostays-green">1</p> {{-- Replace with dynamic count --}}
+            <p class="text-4xl font-bold text-harmostays-green">{{ $totalUsers }}</p>
         </div>
         <div class="content-card text-center transform hover:scale-105 transition-transform duration-300">
             <h3 class="text-lg font-semibold text-gray-500 mb-2">Total Payments</h3>
-            <p class="text-4xl font-bold text-harmostays-orange">1</p> {{-- Replace with dynamic count --}}
+            <p class="text-4xl font-bold text-harmostays-orange">{{ $totalPayments }}</p>
         </div>
         <div class="content-card text-center transform hover:scale-105 transition-transform duration-300">
             <h3 class="text-lg font-semibold text-gray-500 mb-2">Total Revenue</h3>
-            <p class="text-4xl font-bold text-harmostays-pink">$500</p> {{-- Replace with dynamic sum --}}
+            <p class="text-4xl font-bold text-harmostays-pink">${{ number_format($totalRevenue, 2) }}</p>
         </div>
     </div>
     <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">

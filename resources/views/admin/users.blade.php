@@ -18,19 +18,29 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    {{-- Example row, replace with @foreach($users as $user) --}}
+                    @forelse($users as $user)
                     <tr class="transition hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap font-mono text-sm text-gray-700">1</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Admin User</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">admin@example.com</td>
+                        <td class="px-6 py-4 whitespace-nowrap font-mono text-sm text-gray-700">{{ $user->id }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->email }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-harmostays-green text-white">
-                                Admin
-                            </span>
+                            @if($user->is_admin)
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-harmostays-green text-white">
+                                    Admin
+                                </span>
+                            @else
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-800">
+                                    User
+                                </span>
+                            @endif
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-06-01</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->created_at->format('M d, Y') }}</td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @empty
+                    <tr>
+                        <td colspan="5" class="text-center text-gray-400 py-10">No users found.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -67,14 +67,15 @@ class PaymentController extends Controller
 
         // 3. Redirect to PayGate Checkout
         $checkoutUrl = 'https://checkout.paygate.to/pay.php';
-        $queryParams = http_build_query([
-            'address' => $tempAddress,
+        
+        // Manually build the query string to prevent double-encoding the address
+        $queryString = http_build_query([
             'amount' => $validated['price'],
             'email' => $validated['customer_email'],
             'currency' => $validated['currency'],
         ]);
 
-        return redirect($checkoutUrl . '?' . $queryParams);
+        return redirect($checkoutUrl . '?address=' . $tempAddress . '&' . $queryString);
     }
 
     /**
