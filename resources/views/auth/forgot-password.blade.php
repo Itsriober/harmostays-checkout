@@ -39,7 +39,7 @@
 <body class="gradient-bg min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-md mx-auto glass-effect rounded-3xl shadow-xl p-8 animate__animated animate__fadeInDown">
         <div class="flex flex-col items-center mb-8">
-            <img src="{{ asset('uploads/Main-logo.png') }}" alt="HarmoStays Logo" class="h-20 w-auto mb-2 pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="h-20 w-auto mb-2 pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none;" class="h-20 w-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold text-xl">HS</span>
             </div>

@@ -34,7 +34,7 @@
     <!-- Sidebar -->
     <aside class="w-64 flex-shrink-0 bg-white shadow-lg flex flex-col">
         <div class="flex items-center justify-center p-4 border-b">
-            <img src="{{ asset('uploads/Main-logo.png') }}" alt="HarmoStays Logo" class="h-12 w-auto">
+            <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="h-12 w-auto">
         </div>
         <nav class="flex-1 px-4 py-6 space-y-2">
             <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">

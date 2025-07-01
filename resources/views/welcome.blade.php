@@ -70,7 +70,7 @@
     <div class="relative z-10 max-w-2xl mx-auto text-center fade-in">
         <!-- Logo -->
         <div class="mb-8 floating">
-            <img src="{{ asset('uploads/Main-logo.png') }}" alt="HarmoStays Logo" class="mx-auto h-28 w-auto filter drop-shadow-2xl pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="mx-auto h-28 w-auto filter drop-shadow-2xl pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none;" class="mx-auto h-28 w-28 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold text-2xl">HS</span>
             </div>
