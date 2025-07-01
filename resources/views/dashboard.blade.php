@@ -29,12 +29,20 @@
         .content-card { background-color: white; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.07); padding: 2rem; transition: all 0.3s ease; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased" x-data="{ sidebarOpen: false }">
 <div class="flex h-screen bg-gray-100">
+    <!-- Mobile Sidebar Overlay -->
+    <div x-show="sidebarOpen" class="fixed inset-0 z-30 bg-black bg-opacity-50 transition-opacity lg:hidden" @click="sidebarOpen = false"></div>
+
     <!-- Sidebar -->
-    <aside class="w-64 flex-shrink-0 bg-white shadow-lg flex flex-col">
-        <div class="flex items-center justify-center p-4 border-b">
+    <aside 
+        class="w-64 flex-shrink-0 bg-white shadow-lg flex flex-col fixed inset-y-0 left-0 z-40 transform lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out"
+        :class="{ '-translate-x-full': !sidebarOpen, 'translate-x-0': sidebarOpen }">
+        <div class="flex items-center justify-between p-4 border-b">
             <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="h-12 w-auto">
+            <button @click="sidebarOpen = false" class="text-gray-500 lg:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
         </div>
         <nav class="flex-1 px-4 py-6 space-y-2">
             <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -75,9 +83,17 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-6 md:p-10 overflow-y-auto">
-        @yield('dashboard-content')
-    </main>
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <header class="flex items-center justify-between p-4 bg-white border-b lg:hidden">
+            <button @click.stop="sidebarOpen = !sidebarOpen" class="text-gray-500 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="text-xl font-bold text-harmostays-orange">{{ env('APP_NAME') }}</div>
+        </header>
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            @yield('dashboard-content')
+        </main>
+    </div>
 </div>
 </body>
 </html>

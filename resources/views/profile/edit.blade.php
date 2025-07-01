@@ -3,7 +3,7 @@
 @section('dashboard-content')
 <div class="max-w-xl mx-auto animate__animated animate__fadeInUp">
     <div class="flex flex-col items-center mb-8">
-        <img src="{{ asset('uploads/Main-logo.png') }}" alt="HarmoStays Logo" class="h-20 w-auto mb-2 pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <img src="{{ asset('main-logo.png') }}" alt="HarmoStays Logo" class="h-20 w-auto mb-2 pulse-glow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div style="display:none;" class="h-20 w-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
             <span class="text-harmostays-orange font-bold text-xl">HS</span>
         </div>

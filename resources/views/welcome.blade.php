@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="mt-8 text-white text-opacity-70 text-sm animate__animated animate__fadeIn animate__delay-3s">
-            <p>&copy; {{ date('Y') }} Harmo Stays and Tours. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} harmostays & tours. All rights reserved.</p>
         </div>
     </div>
     <!-- Animate.css CDN for extra effects -->
