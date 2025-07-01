@@ -160,4 +160,19 @@ class PaymentController extends Controller
 
         return view('payments.failed', compact('payment'));
     }
+
+    /**
+     * Show the payment receipt.
+     */
+    public function receipt($booking_id)
+    {
+        $payment = Payment::where('booking_id', $booking_id)
+            ->where('status', 'paid')
+            ->firstOrFail();
+
+        // Authorize: only the user who made the payment or an admin can view it
+        $this->authorize('view', $payment);
+
+        return view('payments.receipt', compact('payment'));
+    }
 }

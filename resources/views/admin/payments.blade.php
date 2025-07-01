@@ -2,8 +2,12 @@
 
 @section('dashboard-content')
 <div class="animate__animated animate__fadeInUp">
-    <div class="flex items-center mb-6">
+    <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-gray-800">Manage Payments</h1>
+        <form method="GET" action="{{ route('admin.payments') }}" class="flex items-center space-x-2">
+            <input type="text" name="search" placeholder="Search..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-harmostays-orange transition">
+            <button type="submit" class="bg-harmostays-orange text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-700 transition">Search</button>
+        </form>
     </div>
     <div class="content-card">
         <div class="overflow-x-auto">
@@ -16,6 +20,7 @@
                         <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
                         <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                         <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -31,6 +36,11 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $payment->created_at->format('M d, Y') }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            @if($payment->status === 'paid')
+                                <a href="{{ route('payments.receipt', $payment->booking_id) }}" class="text-harmostays-orange hover:text-orange-700">View Receipt</a>
+                            @endif
+                        </td>
                     </tr>
                     @empty
                     <tr>

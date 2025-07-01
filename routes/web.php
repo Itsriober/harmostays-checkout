@@ -34,6 +34,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/payments/simulate/{booking_id}/pay', [PaymentController::class, 'simulatePay'])->name('payments.simulate.pay');
     Route::post('/payments/simulate/{booking_id}/fail', [PaymentController::class, 'simulateFail'])->name('payments.simulate.fail');
 
+    // Receipt
+    Route::get('/payments/{booking_id}/receipt', [PaymentController::class, 'receipt'])->name('payments.receipt');
+
     // Admin Dashboard (admin only)
     Route::middleware('can:admin')->group(function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');

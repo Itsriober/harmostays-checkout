@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to HarmoStays Secure Payment System</title>
+    <title>Harmo Stays & Tours Checkout</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -78,10 +78,11 @@
         <!-- Welcome Card -->
         <div class="glass-effect rounded-3xl p-10 md:p-14 hover-lift shadow-xl animate__animated animate__fadeInUp">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight animate__animated animate__pulse animate__delay-1s">
-                Welcome to <span class="text-harmostays-orange animate-pulse">HarmoStays</span> Secure Payment System
+                <span class="text-harmostays-orange animate-pulse">Harmo Stays & Tours</span> <br>
+                Secure Payment System
             </h1>
             <p class="text-xl md:text-2xl text-white text-opacity-90 mb-6 font-light animate__animated animate__fadeIn animate__delay-2s">
-                Fast, safe, and modern crypto payments for your bookings.
+                Generate Secure Payment Links for Your Bookings
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center mt-8">
                 <a href="{{ route('login') }}" class="inline-flex items-center px-8 py-4 bg-harmostays-green text-white font-semibold text-lg rounded-full hover:bg-green-700 transition-all duration-300 hover-lift group shadow-lg animate__animated animate__fadeInLeft">
@@ -105,7 +106,7 @@
             </div>
         </div>
         <div class="mt-8 text-white text-opacity-70 text-sm animate__animated animate__fadeIn animate__delay-3s">
-            <p>&copy; {{ date('Y') }} harmostays & tours. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} Harmo Stays and Tours. All rights reserved.</p>
         </div>
     </div>
     <!-- Animate.css CDN for extra effects -->

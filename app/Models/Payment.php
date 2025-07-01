@@ -19,4 +19,12 @@ class Payment extends Model
         'payment_transaction_id',
         'paid_at',
     ];
+
+    /**
+     * Get the user that owns the payment.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
